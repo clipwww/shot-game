@@ -1,0 +1,29 @@
+{
+  "name": "shot-game",
+  "version": "1.0.0",
+  "description": "射擊遊戲",
+  "main": "index.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "init": "mkdir dist",
+    "prebuild": "npm run clean && npm run init",
+    "build-parcel": "parcel build demo/index.html --out-dir=build --public-url https://cdn.jsdelivr.net/gh/clipwww/shot-game@gh-pages/  --no-source-maps --detailed-report && cp -r src/images build/images && cp -r src/audio build/audio",
+    "build": "node_modules/typescript/bin/tsc && npm run build-parcel",
+    "predev": "rm -rf build && mkdir build && npm run build",
+    "dev": " parcel demo/index.html --out-dir=build"
+  },
+  "author": "clipwww",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.10.6",
+    "pad-left": "^2.1.0",
+    "pixi-sound": "^3.0.5",
+    "pixi.js": "^6.1.1",
+    "regenerator-runtime": "^0.13.9",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/pad-left": "^2.1.1",
+    "parcel-bundler": "^1.12.5"
+  }
+}
