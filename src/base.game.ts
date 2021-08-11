@@ -142,7 +142,6 @@ export abstract class BaseGame {
     private async initCommonImages(): Promise<void> {
         await loaderHandler('score', './images/item-point.png');
         await loaderHandler('gamePoint', './images/item-coin.png');
-        await loaderHandler('hourglass', './images/item-hourglass.png');
         await loaderHandler('win', './images/img-win.png');
         await loaderHandler('wow', './images/img-wow.png');
     }
@@ -223,15 +222,6 @@ export abstract class BaseGame {
                 this.effectContainer.addChild(gamePointEffect);
                 gamePointEffect.y = gamePointEffect.y + scoreEffect.height; // 硬幣顯示在點數下方
                 this.application.ticker.add(this.effectTransition(gamePointEffect), this);
-            }
-
-            if (time !== 0) {
-                let timeEffect: PIXI.Container = null;
-                // 有減少時間
-                timeEffect = this.generatePlusOrMinusEffect('hourglass', x, y, time);
-                this.effectContainer.addChild(timeEffect);
-                timeEffect.y = timeEffect.y + scoreEffect.height; // 顯示在點數下方
-                this.application.ticker.add(this.effectTransition(timeEffect), this);
             }
         }
     }
